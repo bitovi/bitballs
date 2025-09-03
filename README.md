@@ -26,7 +26,7 @@ The easiest way to run Bitballs is using Docker. This approach automatically set
 
 1. Clone this repository:
    ```bash
-  git clone https://github.com/bitovi/bitballs.git
+   git clone https://github.com/bitovi/bitballs.git
    cd bitballs
    ```
 
