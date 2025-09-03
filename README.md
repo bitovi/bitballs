@@ -5,8 +5,6 @@
 @group bitballs.serviceModels Service Models
 @hide contents
 
-[![Build Status](https://travis-ci.org/donejs/bitballs.svg?branch=master)](https://travis-ci.org/donejs/bitballs)
-
 Bitballs is a [DoneJS](https://donejs.com) app that enables users to coordinate
 the players, teams, games, rounds and recordings of a basketball tournament.
 It also serves as an example of how to use DoneJS with sessions, user
@@ -28,7 +26,7 @@ The easiest way to run Bitballs is using Docker. This approach automatically set
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/donejs/bitballs.git
+  git clone https://github.com/bitovi/bitballs.git
    cd bitballs
    ```
 
@@ -165,7 +163,7 @@ Finally, using `pgAdmin III` graphical database manager, which should have been 
 Clone this repo using git:
 
 ```
-git clone https://github.com/donejs/bitballs.git
+git clone https://github.com/bitovi/bitballs.git
 ```
 
 Navigate to the repository's directory
