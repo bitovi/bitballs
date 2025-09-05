@@ -35,6 +35,10 @@ The easiest way to run Bitballs is using Docker. This approach automatically set
    docker-compose up
    ```
 
+- If you get the error `error getting credentials - err: exec: "docker-credential-desktop": executable file not found in $PATH, out: ''`, modify your docker config. Especially if you just installed Docker. 
+  - run `code ~/.docker/config.json` to open your docker config file. 
+  - change the credsStore line to `"credStore": "docker-credential-desktop",`. be sure to change `credsStore` -> `credStore`
+
 3. Open your browser and navigate to [http://localhost:5001](http://localhost:5001)
 
 That's it! The application will automatically:
