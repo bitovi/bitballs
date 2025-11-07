@@ -12,3 +12,6 @@ public/node_modules
 public/dist
 public/package-lock.json
 docs/
+test-results/
+playwright-report/
+.vscode/
