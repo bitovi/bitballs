@@ -1,0 +1,26 @@
+{
+    "name": "bitballs-app-requirements",
+    "version": "1.0.0",
+    "description": "Standalone Playwright test environment for Bitballs app",
+    "private": true,
+    "scripts": {
+        "test": "playwright test",
+        "test:headed": "playwright test --headed",
+        "test:ui": "playwright test --ui",
+        "test:debug": "playwright test --debug",
+        "playwright:install": "playwright install --with-deps",
+        "app:up": "docker-compose up -d",
+        "app:down": "docker-compose down",
+        "app:logs": "docker-compose logs -f app",
+        "app:restart": "docker-compose restart app",
+        "app:wait": "./wait-for-app.sh",
+        "verify": "./verify-setup.sh",
+        "setup": "npm install && npm run playwright:install && npm run app:up && npm run app:wait"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.48.0"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}
