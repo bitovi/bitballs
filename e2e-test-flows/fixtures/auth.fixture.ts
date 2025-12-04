@@ -1,4 +1,5 @@
 import { test as base } from "@playwright/test";
+import { loadTestUsers } from "../global-setup";
 
 /**
  * Custom fixture for authenticated users
@@ -13,38 +14,80 @@ type AuthFixtures = {
 export const test = base.extend<AuthFixtures>({
   /**
    * Fixture for a regular authenticated user
+   * Automatically logs in using the test user created in global setup
    */
   authenticatedPage: async ({ page }, use) => {
-    // Navigate to login
+    const testUsers = loadTestUsers();
+
+    // Navigate to home page
     await page.goto("/");
 
-    // TODO: Implement login logic
-    // This is a placeholder - implement actual login when writing tests
-    // Example:
-    // await page.click('text=Session');
-    // await page.fill('input[name="email"]', 'user@example.com');
-    // await page.fill('input[name="password"]', 'password123');
-    // await page.click('button:has-text("Login")');
+    // Click session dropdown to open login form
+    await page.click(".session-menu");
 
+    // Wait for login form to be visible
+    await page.waitForSelector('input[name="email"]', { state: "visible" });
+
+    // Fill in login form with regular user credentials
+    await page.fill('input[name="email"]', testUsers.regular.email);
+    await page.fill('input[name="password"]', testUsers.regular.password);
+
+    // Submit login
+    await page.click('button:has-text("Login")');
+
+    // Wait for login to complete
+    await page.waitForTimeout(2000);
+
+    // Use the authenticated page in the test
     await use(page);
+
+    // Logout after test (cleanup)
+    try {
+      await page.click(".session-menu");
+      await page.click('button:has-text("Logout")');
+      await page.waitForTimeout(1000);
+    } catch (error) {
+      // Ignore logout errors
+    }
   },
 
   /**
    * Fixture for an admin user
+   * Automatically logs in using the admin user created in global setup
    */
   adminPage: async ({ page }, use) => {
-    // Navigate to login
+    const testUsers = loadTestUsers();
+
+    // Navigate to home page
     await page.goto("/");
 
-    // TODO: Implement admin login logic
-    // This is a placeholder - implement actual login when writing tests
-    // Example:
-    // await page.click('text=Session');
-    // await page.fill('input[name="email"]', 'admin@example.com');
-    // await page.fill('input[name="password"]', 'adminpass123');
-    // await page.click('button:has-text("Login")');
+    // Click session dropdown to open login form
+    await page.click(".session-menu");
 
+    // Wait for login form to be visible
+    await page.waitForSelector('input[name="email"]', { state: "visible" });
+
+    // Fill in login form with admin user credentials
+    await page.fill('input[name="email"]', testUsers.admin.email);
+    await page.fill('input[name="password"]', testUsers.admin.password);
+
+    // Submit login
+    await page.click('button:has-text("Login")');
+
+    // Wait for login to complete
+    await page.waitForTimeout(2000);
+
+    // Use the authenticated page in the test
     await use(page);
+
+    // Logout after test (cleanup)
+    try {
+      await page.click(".session-menu");
+      await page.click('button:has-text("Logout")');
+      await page.waitForTimeout(1000);
+    } catch (error) {
+      // Ignore logout errors
+    }
   },
 });
 

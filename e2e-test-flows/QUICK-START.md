@@ -18,10 +18,12 @@ docker-compose up -d
 
 ## Running Tests
 
+**Note**: Test users are automatically created before tests run and deleted after. See [SETUP-TEARDOWN.md](./SETUP-TEARDOWN.md) for details.
+
 ```bash
 cd e2e-test-flows
 
-# Run all tests
+# Run all tests (includes automatic setup/teardown)
 npm test
 
 # Run in UI mode (recommended for development)

@@ -33,12 +33,23 @@ docker-compose up
 
 The application should be accessible at: http://localhost:5001
 
+## Test Setup and Teardown
+
+The test suite includes **automatic user management**:
+
+- **Global Setup**: Creates admin and regular test users before tests run
+- **Global Teardown**: Deletes test users after all tests complete
+
+See [SETUP-TEARDOWN.md](./SETUP-TEARDOWN.md) for detailed documentation.
+
+**Important**: Test users are automatically created when you run `npm test`. You don't need to manually create users in the application.
+
 ## Running Tests
 
 ### Basic Commands
 
 ```bash
-# Run all tests
+# Run all tests (includes setup and teardown)
 npm test
 
 # Run tests in headed mode (see browser)
