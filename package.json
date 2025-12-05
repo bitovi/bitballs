@@ -10,6 +10,13 @@
     "db-migrate": "db-migrate up",
     "document": "documentjs -d",
     "test": "npm run jshint && cd public/ && npm test",
+    "test:e2e": "node scripts/setup-e2e.js && playwright test",
+    "test:e2e:setup": "node scripts/setup-e2e.js",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:debug": "playwright test --debug",
+    "test:e2e:report": "playwright show-report",
+    "test:install": "playwright install",
     "jshint": "jshint ./ --config .jshintrc",
     "install": "node install.js && npm run db-migrate",
     "deploy": "firebase deploy",
@@ -38,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-  "url": "https://github.com/bitovi/bitballs.git"
+    "url": "https://github.com/bitovi/bitballs.git"
   },
   "keywords": [
     "node",
@@ -47,6 +54,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@playwright/test": "^1.55.1",
     "documentjs": "^0.4.4",
     "donejs": "^3.0.0",
     "donejs-cli": "^3.0.0",
